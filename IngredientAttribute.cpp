@@ -2,11 +2,11 @@
 
 IngredientAttribute::IngredientAttribute()
 {
-  this->name = nullptr;
+  this->name = NULL;
   this->weight = 0;
 
   this->childrenIndex = 0;
-  this->children = nullptr;
+  this->children = NULL;
 }
 IngredientAttribute::IngredientAttribute(string name)
 {
@@ -15,7 +15,7 @@ IngredientAttribute::IngredientAttribute(string name)
   this->weight = 0;
 
   this->childrenIndex = 0;
-  this->children = new IngredientAttribute[MAX_SIZE_ATTRIBUTES_PER_INGREDIENT];
+  this->children = new IngredientAttribute*[MAX_SIZE_ATTRIBUTES_PER_INGREDIENT];
 }
 IngredientAttribute::IngredientAttribute(string name, unsigned int weight)
 {
@@ -24,28 +24,44 @@ IngredientAttribute::IngredientAttribute(string name, unsigned int weight)
   this->weight = weight;
 
   this->childrenIndex = 0;  
-  this->children = new IngredientAttribute[MAX_SIZE_ATTRIBUTES_PER_INGREDIENT];
+  this->children = new IngredientAttribute*[MAX_SIZE_ATTRIBUTES_PER_INGREDIENT];
 }
 IngredientAttribute::~IngredientAttribute()
 {
-  if(this->name)
+  if(this->name){
     delete [] this->name;
+    this->name = NULL;
+  }
   this->weight = 0;
 
   if(this->children)
-    for(unsigned int c = 0; c < this->childrenIndex; c++)
-      delete &this->children[c];
+  {
+	  for(unsigned int c = 0; c < this->childrenIndex; c++)
+	  {
+		if(&this->children[c])
+		{
+			delete this->children[c];
+		}
+	  }
+	  delete [] children;
+  }
   this->childrenIndex = 0;
 }
 IngredientAttribute::IngredientAttribute(const IngredientAttribute & other)
 {
   this->name = other.name;
   this->weight = other.weight;
+
+  this->childrenIndex = other.childrenIndex;
+  this->children = other.children;
 }
 IngredientAttribute & IngredientAttribute::operator = (const IngredientAttribute & other)
 {
   this->name = other.name;
   this->weight = other.weight;
+
+  this->childrenIndex = other.childrenIndex;
+  this->children = other.children;
 
   return *this;
 }
@@ -77,7 +93,7 @@ unsigned int IngredientAttribute::getNumAttributes()
 {
   return this->childrenIndex;
 }
-IngredientAttribute * IngredientAttribute::getAttributes(unsigned int numChildren)
+IngredientAttribute ** IngredientAttribute::getAttributes(unsigned int numChildren)
 {
   numChildren = this->childrenIndex;
   return this->children;
@@ -85,14 +101,14 @@ IngredientAttribute * IngredientAttribute::getAttributes(unsigned int numChildre
 IngredientAttribute * IngredientAttribute::getAttribute(unsigned int index)
 {
   if(index >= this->childrenIndex)
-    return nullptr;
-  return &this->children[index];
+    return NULL;
+  return this->children[index];
 }
 bool IngredientAttribute::addAttribute(IngredientAttribute * newChild)
 {
   if(this->childrenIndex >= MAX_SIZE_ATTRIBUTES_PER_INGREDIENT)
     return false;
-  this->children[this->childrenIndex++] = *newChild;
+  this->children[this->childrenIndex++] = newChild;
   return true;
 }
 bool IngredientAttribute::addAttribute(char * name, unsigned int weight)

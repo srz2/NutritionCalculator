@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdio.h>
+#include <cstring>
 using namespace std;
 
 #define MAX_SIZE_INGREDIENT_NAME            32
@@ -14,7 +15,7 @@ private:
   unsigned int weight;
 
   unsigned int childrenIndex;
-  IngredientAttribute * children;
+  IngredientAttribute ** children;
 public:
   IngredientAttribute();
   IngredientAttribute(string name);
@@ -31,7 +32,7 @@ public:
 
   bool hasAttributes();
   unsigned int getNumAttributes();
-  IngredientAttribute * getAttributes(unsigned int numChildren);
+  IngredientAttribute ** getAttributes(unsigned int numChildren);
   IngredientAttribute * getAttribute(unsigned int index);
   bool addAttribute(IngredientAttribute * newChild);
   bool addAttribute(char * name, unsigned int weight);

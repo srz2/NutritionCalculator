@@ -9,7 +9,7 @@ class Ingredient
     unsigned int weight;
 
     unsigned int attributeIndex;
-    IngredientAttribute * attributes;
+    IngredientAttribute ** attributes;
   public:
     Ingredient();
     Ingredient(string name);
@@ -29,7 +29,7 @@ class Ingredient
     unsigned int getCaloriesFromFat();
 
     unsigned int getNumAttributes();
-    IngredientAttribute * getAttributes(unsigned int & numAttributes);
+    IngredientAttribute ** getAttributes(unsigned int & numAttributes);
     IngredientAttribute * getAttribute(unsigned int index);
     IngredientAttribute * getAttribute(char * name);
     bool addAttribute(IngredientAttribute * newAttribute);

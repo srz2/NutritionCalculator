@@ -7,7 +7,7 @@ typedef IngredientAttribute iAtt;
 
 int main()
 {
-  unsigned int index = 0;
+  //unsigned int index = 0;
   Ingredient * ingredients = new Ingredient[100];
 
   string foodname = "";
@@ -43,7 +43,7 @@ int main()
 
 
   IngredientAttribute * singleAttribute = anIngredient.getAttribute((unsigned int)0);
-  cout << "\tCreated: " << anIngredient.getName() << " with " << anIngredient.getNumAttributes() << " attibutes!" << endl;
+  cout << "\tCreated: " << anIngredient.getName() << " with " << anIngredient.getNumAttributes() << " attributes!" << endl;
   cout << "\t\tIt has " << singleAttribute->getWeight() << "g of " << singleAttribute->getName() << "!" << endl;
   cout << "\t\t" << singleAttribute->getName() << " has " << singleAttribute->getNumAttributes() << endl; 
   
