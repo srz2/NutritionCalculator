@@ -1,13 +1,19 @@
-#include <iostream>
 #include <fstream>
-#include "Ingredient.h"
-using namespace std;
+#include "MainProgram.h"
 
-typedef IngredientAttribute iAtt;
+//typedef IngredientAttribute iAtt;
 
 int main()
 {
-  //unsigned int index = 0;
+  Log * log = Log::Instance();
+  MainProgram * myProgram = MainProgram::Instance();
+
+  myProgram->run();
+
+  delete myProgram;
+  delete log;
+  
+  /*unsigned int index = 0;
   Ingredient * ingredients = new Ingredient[100];
 
   string foodname = "";
@@ -47,5 +53,5 @@ int main()
   cout << "\t\tIt has " << singleAttribute->getWeight() << "g of " << singleAttribute->getName() << "!" << endl;
   cout << "\t\t" << singleAttribute->getName() << " has " << singleAttribute->getNumAttributes() << endl; 
   
-  delete [] ingredients;
+  delete [] ingredients;*/
 }
