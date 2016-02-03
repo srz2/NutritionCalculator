@@ -2,4 +2,7 @@
 .cproject
 .settings/
 *.out
-/Debug/
+Debug/
+Log/
+*.txt
+
