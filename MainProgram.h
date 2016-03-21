@@ -1,9 +1,41 @@
-//#include "Ingredient.h"
 #include <iostream>
 #include <iomanip>
 #include <stdio.h>
 #include "Log/Log.h"
+#include "Ingredient.h"
 using namespace std;
+
+#ifndef Database_File
+#define Database_File     ".nutritioncalculator.xml"
+#endif
+
+#ifndef Database_Location
+#define Database_Location "./"
+#endif
+
+#ifndef Database_Path
+#define Database_Path     Database_Location Database_File
+#endif
+
+#ifndef kDefaultFoodArray
+#define kDefaultFoodArray       100
+#endif
+
+#ifndef kINPUT_BUFFER_SIZE_STR
+#define kINPUT_BUFFER_SIZE_STR  255
+#endif
+
+#ifndef kINPUT_BUFFER_SIZE_INT
+#define kINPUT_BUFFER_SIZE_INT  10
+#endif
+
+enum OptionKey{
+  OptionKeyInvalid,
+  OptionKeyAdd,
+  OptionKeyDelete,
+  OptionKeySearch,
+  OptionKeyQuit
+};
 
 class MainProgram{
 private:

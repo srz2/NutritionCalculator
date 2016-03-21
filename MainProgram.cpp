@@ -51,11 +51,46 @@ int MainProgram::getInput()
 void MainProgram::run()
 {
   system("clear");
-  showMainMenu();
-  getInput();
+
+  //Import Database from backup file
+  importDatabase(Database_Path);
+
+  int option = OptionKeyInvalid;
+  do{
+    showMainMenu();
+    option = getInput();
+
+    //Initiate Action
+    switch(option)
+    {
+      case OptionKeyAdd:
+      {
+        addItem();
+        break;
+      }
+      case OptionKeyDelete:
+      {
+        break;
+      }
+      case OptionKeySearch:
+      {
+        break;
+      }
+      case OptionKeyQuit:
+      {
+        //This will stop the loop
+        break;
+      }
+      default:
+      {
+        cout << "Unknown Option \'" << option << "\'" << endl;
+      }
+    }
+  }while(option != OptionKeyQuit);
+
+  //At this point, the program is ending, so do clean up
+  exportDatabase(Database_Path);
 }
-void MainProgram::importFile(const char * fileName)
-{
 
 }
 
