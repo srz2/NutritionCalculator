@@ -10,10 +10,10 @@ Ingredient::Ingredient()
   this->attributeIndex = 0;
   this->attributes = NULL;
 }
-Ingredient::Ingredient(string name)
+Ingredient::Ingredient(const char * name)
 {
   this->name = new char[MAX_SIZE_INGREDIENT_NAME];
-  strcpy(this->name, name.c_str());
+  strcpy(this->name, name);
   this->weight = 0;
   this->calories = 0;
   this->caloriesFromFat = 0;
@@ -21,10 +21,10 @@ Ingredient::Ingredient(string name)
   this->attributeIndex = 0;
   this->attributes = new IngredientAttribute*[MAX_SIZE_ATTRIBUTES_PER_INGREDIENT];
 }
-Ingredient::Ingredient(string name, unsigned int calories, unsigned, int caloriesFromFat)
+Ingredient::Ingredient(const char * name, unsigned int calories, unsigned, int caloriesFromFat)
 {
   this->name = new char[MAX_SIZE_INGREDIENT_NAME];
-  strcpy(this->name, name.c_str());
+  strcpy(this->name, name);
 
   this->weight = 0;
   this->calories = calories;

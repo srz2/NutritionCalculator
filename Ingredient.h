@@ -12,12 +12,14 @@ class Ingredient
     IngredientAttribute ** attributes;
   public:
     Ingredient();
-    Ingredient(string name);
-    Ingredient(string name, unsigned int calories, unsigned, int caloriesFromFat);
+    Ingredient(const char * name);
+    Ingredient(const char * name, unsigned int calories, unsigned, int caloriesFromFat);
 
     ~Ingredient();
     Ingredient(const Ingredient & other);
     Ingredient & operator = (const Ingredient & other);
+    Ingredient(const Ingredient * other);
+    Ingredient * operator = (const Ingredient * other);
 
     void setName(char * name);
     char * getName();
