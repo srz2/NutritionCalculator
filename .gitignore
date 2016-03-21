@@ -5,4 +5,5 @@
 Debug/
 Log/
 *.txt
-
+.nutritioncalculator.xml
+n-cal

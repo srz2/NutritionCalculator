@@ -1,9 +1,9 @@
 all:
-	g++ *.cpp Log/*.cpp
+	g++ *.cpp Log/*.cpp -o n-cal
 run:
-	./a.out
+	./n-cal
 clean:
-	rm a.out
+	rm n-cal
 get-dependancies:
 	git clone https://github.com/srz2/CPlusPlus-Log-.git Log
 rm-dependancies:
