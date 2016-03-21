@@ -22,6 +22,6 @@ public:
 
   void run();
 
-  void importFile(const char * fileName);
-  void exportFile(const char * fileName);
+  void importDatabase(const char * fileName);
+  void exportDatabase(const char * fileName);
 };
