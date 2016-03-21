@@ -49,12 +49,19 @@ void MainProgram::showMainMenu()
 
 int MainProgram::getInput()
 {
-  int input = 0;
+  char * input = new char[kINPUT_BUFFER_SIZE_INT];
+  memset(input, '\0', kINPUT_BUFFER_SIZE_INT);
 
   cout << endl << "Option: ";
-  cin >> input;
+  int val = scanf("%s", input);
 
-  return input;
+  //Assure the last char isn't overwritten
+  input[kINPUT_BUFFER_SIZE_INT - 1] = '\0';
+  int value = atoi(input);
+
+  delete [] input;
+
+  return value;
 }
 
 void MainProgram::run()
