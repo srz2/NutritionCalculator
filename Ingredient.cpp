@@ -74,7 +74,25 @@ Ingredient & Ingredient::operator = (const Ingredient & other)
 
   return *this;
 } 
+Ingredient::Ingredient(const Ingredient * other)
+{
+  this->name = other->name;
+  this->weight = other->weight;
+  this->calories = other->calories;
+  this->caloriesFromFat = other->caloriesFromFat;
+  this->attributes = other->attributes;
+  this->attributeIndex = other->attributeIndex;
+}
+Ingredient * Ingredient::operator = (const Ingredient * other)
+{
+  this->name = other->name;
+  this->calories = other->calories;
+  this->caloriesFromFat = other->caloriesFromFat;
+  this->attributes = other->attributes;
+  this->attributeIndex = other->attributeIndex;
 
+  return this;
+} 
 void Ingredient::setName(char * name)
 {
   if(this->name == NULL)
