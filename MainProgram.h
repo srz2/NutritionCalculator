@@ -16,6 +16,13 @@ private:
   void showMainMenu();
   int getInput();
 
+  bool addItem();
+
+protected:
+  //Root Ingredient Array
+  Ingredient * ingredients[kDefaultFoodArray];
+  unsigned int ingredient_index;
+
 public:
   static MainProgram * Instance();
   virtual ~MainProgram();

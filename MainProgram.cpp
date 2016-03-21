@@ -31,11 +31,11 @@ MainProgram & MainProgram::operator = (const MainProgram & other)
 
 void MainProgram::showMainMenu()
 {
-  cout << "There are " << " " << " items in the database." << endl << endl;
-  cout << "1 - Add Item" << endl;
-  cout << "2 - Delete Item" << endl;
-  cout << "3 - Search for Item" << endl;
-  cout << "4 - Quit Program" << endl;
+  cout << "There are " << ingredient_index << " items in the database." << endl << endl;
+  cout << OptionKeyAdd    << " - Add Item" << endl;
+  cout << OptionKeyDelete << " - Delete Item" << endl;
+  cout << OptionKeySearch << " - Search for Item" << endl;
+  cout << OptionKeyQuit   << " - Quit Program" << endl;
 }
 
 int MainProgram::getInput()
