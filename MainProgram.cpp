@@ -11,7 +11,16 @@ MainProgram * MainProgram::Instance()
 
 MainProgram::MainProgram()
 {
+  //Initialize Variables
+  ingredient_index = 0;
 
+  //Check for Database
+  ifstream inFile(Database_Path);
+  if(!inFile)
+  {
+    cout << "Database missing..." << endl;
+  }
+  inFile.close();
 }
 
 MainProgram::~MainProgram()
@@ -92,6 +101,39 @@ void MainProgram::run()
   exportDatabase(Database_Path);
 }
 
+bool MainProgram::addItem()
+{
+  Log::Instance()->write("Begin Add Item");
+
+  //Get Name of Food
+  char name[kINPUT_BUFFER_SIZE_STR];
+  memset(name, '\0', kINPUT_BUFFER_SIZE_STR);
+  cout << "Enter new food item: ";
+  scanf("%s", name);
+
+  //Get Weight of Food
+  char weight[kINPUT_BUFFER_SIZE_INT];
+  memset(weight, '\0', kINPUT_BUFFER_SIZE_INT);
+  cout << "Enter weight of a single serving of \'" << name << "\': ";
+  scanf("%s", weight);
+
+  //Get Calories of food
+  char calories[kINPUT_BUFFER_SIZE_INT];
+  memset(calories, '\0', kINPUT_BUFFER_SIZE_INT);
+  cout << "Enter the amount of calories: ";
+  scanf("%s", calories);
+
+  //Get Calories from Fat of food
+  char caloriesFat[kINPUT_BUFFER_SIZE_INT];
+  memset(caloriesFat, '\0', kINPUT_BUFFER_SIZE_INT);
+  cout << "Enter the amount of calories from fat: ";
+  scanf("%s", caloriesFat);
+
+  Ingredient * newFood = new Ingredient(name);//, atoi(calories), atoi(caloriesFat));
+  ingredients[ingredient_index++] = newFood;
+  Log::Instance()->write("Added %s", name);
+
+  return false;
 }
 
 void MainProgram::importDatabase(const char * fileName)
